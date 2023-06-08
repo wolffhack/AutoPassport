@@ -20,7 +20,7 @@ contract MultiWordConsumer is ChainlinkClient, ConfirmedOwner {
 
     bytes32 private jobId;
     uint256 private fee;
-
+    address private oracle;
     // multiple params returned in a single oracle response
     //string public brand;
     string[] public multas;
@@ -65,7 +65,8 @@ contract MultiWordConsumer is ChainlinkClient, ConfirmedOwner {
             "get",
             "https://localhost:5000/cars/fines/1"
         );
-        sendChainlinkRequest(req, fee); // MWR API.
+        // req.add("path", "multas");
+        return sendChainlinkRequest(req, fee); // MWR API.
     }
 
     /**
